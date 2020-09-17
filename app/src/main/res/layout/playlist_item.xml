@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="ru.test.lightdeezer.ui.playlist.PlaylistInfoViewModel" />
+
+
+        <variable
+            name="playlistItemClick"
+            type="ru.test.lightdeezer.ui.playlist.PlaylistItemClickListener"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/item_view"
+        android:focusable="true"
+        android:clickable="true"
+        android:onClick="@{() ->  playlistItemClick.onPlaylistItemClicked(viewModel.getPlaylistCoverMedium(), viewModel.getPlaylistId())}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <TextView
+            android:id="@+id/playlist_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            app:mutableText="@{viewModel.getPlaylistTitle()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitEnd"
+            android:adjustViewBounds="true"
+            android:id="@+id/playlist_cover"
+            app:imageUrl = "@{viewModel.getPlaylistCover()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/playlist_title"
+            />
+<!--        <TextView-->
+<!--            android:id="@+id/playlist_cover"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            app:mutableText="@{viewModel.getPlaylistCover()}"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/playlist_title" />-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

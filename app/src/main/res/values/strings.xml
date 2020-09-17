@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Light Deezer</string>
+    <string name="retry">retry</string>
+    <string name="playlist_error">load playlist error</string>
+</resources>
